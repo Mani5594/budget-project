@@ -2,7 +2,7 @@ version: "3.8"
 services:
   postgres:
     container_name: postgres
-    image: 'postgres'
+    image: 'postgres:11.22-alpine3.18'
     ports:
       - '5400:5432'
     volumes:
@@ -12,16 +12,16 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: budget-management
 
-  pgadmin:
-    image: dpage/pgadmin4
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: Welcome123
-    depends_on:
-      - postgres
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   restart: always
+  #   ports:
+  #     - 8080:80
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #     PGADMIN_DEFAULT_PASSWORD: Welcome123
+  #   depends_on:
+  #     - postgres
 
   backend:
     build: ./expense-app-api

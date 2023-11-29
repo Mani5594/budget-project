@@ -1,13 +1,15 @@
-FROM node
+FROM node:lts-alpine3.18
 
 WORKDIR /app
 
-COPY package.json .
+COPY package*.json .
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
 EXPOSE 3100
 
-CMD ["npm", "start"]
+RUN npm run build
+
+CMD ["node", "dist/main.js"]
