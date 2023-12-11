@@ -17,7 +17,7 @@ FROM node:lts-alpine3.18
 
 WORKDIR /app
 
-COPY --from=build /app/dist ./dest
+COPY --from=build /app/dist ./dist
 
 COPY package*.json .
 
