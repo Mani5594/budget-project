@@ -27,9 +27,9 @@ services:
     build: ./expense-app-api
     ports:
       - '3100:3100'
-    volumes:
-      - ./expense-app-api:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./expense-app-api:/app
+    #   - /app/node_modules
     depends_on:
       - postgres
 
