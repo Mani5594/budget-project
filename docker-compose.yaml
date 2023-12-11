@@ -33,17 +33,17 @@ services:
     depends_on:
       - postgres
 
-  frontend:
-    build: ./expense-app-next-js
-    ports:
-      - '3000:3000'
-    volumes:
-      - ./expense-app-next-js/src:/app/src
-      - /app/node_modules
-    stdin_open: true
-    tty: true
-    depends_on:
-      - backend
+  # frontend:
+  #   build: ./expense-app-next-js
+  #   ports:
+  #     - '3000:3000'
+  #   volumes:
+  #     - ./expense-app-next-js/src:/app/src
+  #     - /app/node_modules
+  #   stdin_open: true
+  #   tty: true
+  #   depends_on:
+  #     - backend
 
 volumes:
   budget:
