@@ -84,7 +84,7 @@ const Intro = () => {
           </button>
         </form>
         { showSignUp 
-          ? <small>Don't have an Account? <span className="accent" onClick={() => {setShowSignup(false)}} style={{cursor: 'pointer'}}> Sign Up </span> </small>
+          ? <small>{"Don't have an Account?" }<span className="accent" onClick={() => {setShowSignup(false)}} style={{cursor: 'pointer'}}> Sign Up </span> </small>
           : <small>Already have an Account? <span className="accent" onClick={() => {setShowSignup(true)}} style={{cursor: 'pointer'}}> Sign In </span> </small>
         }
       </div>

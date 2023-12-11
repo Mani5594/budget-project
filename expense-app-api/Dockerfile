@@ -1,15 +1,30 @@
-FROM node:lts-alpine3.18
+#build stage
+FROM node:lts-alpine3.18 AS build
 
 WORKDIR /app
 
 COPY package*.json .
 
-RUN npm ci
+RUN npm install
 
 COPY . .
 
-EXPOSE 3100
-
 RUN npm run build
 
-CMD ["node", "dist/main.js"]
+#run stage
+
+FROM node:lts-alpine3.18
+
+WORKDIR /app
+
+COPY --from=build /app/dist ./dest
+
+COPY package*.json .
+
+RUN npm install --only=production
+
+RUN rm package*.json
+
+EXPOSE 3100
+
+CMD [ "node", "dist/main.js" ]
